@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node index",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test-brb": "npx newman run tests/test-backend-v1.json -e tests/enviroments/localhost.json",
+    "test": "npm run test-brb"
   },
   "repository": {
     "type": "git",
