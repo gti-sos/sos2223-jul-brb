@@ -3,7 +3,7 @@
   
     import { onMount } from 'svelte';
     import { dev } from '$app/environment';
-    import {  Table, Alert } from 'sveltestrap';
+    import {  Table, Alert , Icon, ButtonToolbar, Button  } from 'sveltestrap';
     
     
     onMount(async () => {
@@ -43,6 +43,35 @@
       const status = await res.status;
       resultStatus = status;  
     }
+
+    async function getInitialData(){
+      resultStatus = result = "";
+      const res = await fetch(API+`/loadInitialData`, {
+        method: 'GET'
+      });
+      try {
+        const data = await res.json();
+        result = JSON.stringify(data, null, 2);
+        datos= data;
+      } catch (error) {
+        console.log(`Error parsing result: ${error}`);
+      }
+      const status = await res.status;
+      resultStatus = status;
+      if (status==200) {
+      getOccupationStats();
+      message="Datos cargados correctamente"
+      c="success";
+     }else if(status==409){
+      message="Los datos ya están cargados"
+      c="warning";
+     }else if(status==500){
+      message="Error interno"
+      c="danger";
+     }
+    }
+
+
   
     
   </script>
@@ -54,7 +83,7 @@
   {/if}
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
-  
+  <div class="table-container">
   <Table striped>
     <thead>
       <tr>
@@ -63,12 +92,17 @@
         <th>employment</th>
         <th>estimated_establishments</th>
         <th>Occupancy_rate_per_place</th>
+        <td>
+          <Button color="primary" outline size="sm" on:click={() => getInitialData()}>
+            <Icon name="arrow-counterclockwise" class="icon" />
+          </Button>
+        </td>
       </tr>
     </thead>
     <tbody>
         {#each datos as dato}
         <tr>
-          <td><a href="/occupation-stats/{dato.province}/{dato.month}">{dato.province}</a></td>
+          <td><a href="/tourism/{dato.province}/{dato.month}">{dato.province}</a></td>
           <td>{dato.month}</td>
           <td>{dato.employment}</td>
           <td>{dato.estimated_establishments}</td>
@@ -77,5 +111,10 @@
         {/each}
     </tbody>
   </Table>
+  </div>
+  <ButtonToolbar>
+    <Button color="primary" on:click={() => getInitialData()}>Load Data</Button>
+  </ButtonToolbar>
+  <div class="espacio"></div>
   
   

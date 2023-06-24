@@ -1,6 +1,9 @@
 body {
+    padding-bottom:60px;
     background-color: white;
 }
+
+
 .footer {
     position: fixed;
     bottom: 0;
@@ -44,3 +47,4 @@ body {
     background-color: #50af48;
     color: #363636;
 }
+
