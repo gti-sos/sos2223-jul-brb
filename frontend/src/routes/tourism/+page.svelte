@@ -1,7 +1,81 @@
-<script>
+<script lang="ts">
+    //@ts-nocheck
+  
     import { onMount } from 'svelte';
     import { dev } from '$app/environment';
-    import { Button, Table, Alert, Icon } from 'sveltestrap';
+    import {  Table, Alert } from 'sveltestrap';
+    
+    
+    onMount(async () => {
+      await getOccupationStats();
+    });
+  
+    let API = '/api/v2/tourism';
+    
+    if (dev) API = 'http://localhost:12345'+API;
+    
 
-
-</script>
+    let datos= [];
+    let result = "";
+    let resultStatus = "";
+    
+    let message = "";
+    let c = "";
+  
+    let limit =10;
+    let offset=0;
+    let currentPage = 0;
+    let totalPages = 1;
+    
+  
+    async function getOccupationStats() {
+      resultStatus = result = "";
+      const res = await fetch(API+`?offset=${offset}&limit=${limit}`, {
+        method: 'GET'
+      });
+      try {
+        const data = await res.json();
+        result = JSON.stringify(data, null, 2);
+        datos= data;
+      } catch (error) {
+        console.log(`Error parsing result: ${error}`);
+      }
+      const status = await res.status;
+      resultStatus = status;  
+    }
+  
+    
+  </script>
+  
+  <h1>Occupation-stats</h1>
+  
+  {#if message != ""}
+    <Alert color={c}>{message}</Alert>
+  {/if}
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <Table striped>
+    <thead>
+      <tr>
+        <th>Province</th>
+        <th>Month</th>
+        <th>employment</th>
+        <th>estimated_establishments</th>
+        <th>Occupancy_rate_per_place</th>
+      </tr>
+    </thead>
+    <tbody>
+        {#each datos as dato}
+        <tr>
+          <td><a href="/occupation-stats/{dato.province}/{dato.month}">{dato.province}</a></td>
+          <td>{dato.month}</td>
+          <td>{dato.employment}</td>
+          <td>{dato.estimated_establishments}</td>
+          <td>{dato.Occupancy_rate_per_place}</td>
+        </tr>
+        {/each}
+    </tbody>
+  </Table>
+  
+  

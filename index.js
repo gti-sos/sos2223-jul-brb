@@ -7,6 +7,8 @@ import { handler } from "./frontend/build/handler.js";
 
 var app = express();
 
+app.use(cors());
+
 app.use("/", express.static("./public"));
 app.use(express.json());
 
@@ -16,7 +18,7 @@ loadBackendBRBv1(app);
 loadBackendBRBv2(app);
 
 app.use(handler);
-app.use(cors);
+
 
 app.listen(port, () => {
   console.log(`Server ready in port ${port}`);
