@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node index",
-    "test-brb": "npx newman run tests/test-backend-v1.json -e tests/enviroments/localhost.json",
+    "test-brb": "npx newman run tests/test-backend-v2.json -e tests/enviroments/localhost.json",
     "test": "npm run test-brb"
   },
   "repository": {
