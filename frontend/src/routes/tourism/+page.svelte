@@ -217,7 +217,7 @@
     
   </script>
   
-  <h1>Occupation-stats</h1>
+  <h1>tourism-stats</h1>
   
   {#if message != ""}
     <Alert color={c}>{message}</Alert>

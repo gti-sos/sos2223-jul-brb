@@ -331,7 +331,7 @@ function loadBackendBRBv2(app) {
                 for (var i = 0; i < arrayBRB.length; i++) {
                     db.insert(arrayBRB[i]);
                 }
-                response.sendStatus(201);
+                response.sendStatus(200);
                 console.log("se han cargado los datos iniciales");
             } else {
                 response.status(409).send("ya existen los datos");
