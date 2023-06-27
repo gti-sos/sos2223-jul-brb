@@ -108,8 +108,8 @@
         <th>Provincia</th>
         <th>Mes</th>
         <th>Empleo</th>
-        <th>Establicimientos Estimados</th>
-        <th>Grado de ocupación por plaza</th>
+        <th>Establicimientos</th>
+        <th>Grado de ocupación</th>
       </tr>
     </thead>
     <tbody>
