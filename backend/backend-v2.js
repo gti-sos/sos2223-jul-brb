@@ -91,7 +91,7 @@ const BRB_URL = BASE_API_URL + "/tourism";
 function loadBackendBRBv2(app) {
     //-----------------------------------------gets-------------------------------------------------------------
     app.get(BRB_URL+"/docs",(req,res)=>{
-        res.redirect("https://documenter.getpostman.com/view/25989970/2s93RNyEu7");
+        res.redirect("https://documenter.getpostman.com/view/25989970/2s93z9aMML");
     })
 
 
