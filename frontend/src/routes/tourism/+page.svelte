@@ -238,11 +238,11 @@
         </Button>
       </tr>
       <tr>
-        <th>Province</th>
-        <th>Month</th>
-        <th>employment</th>
-        <th>estimated_establishments</th>
-        <th>Occupancy_rate_per_place</th>
+        <th>Provincia</th>
+        <th>Mes</th>
+        <th>Empleo</th>
+        <th>Establicimientos Estimados</th>
+        <th>Grado de ocupación por plaza</th>
       </tr>
     </thead>
     <tbody>
@@ -289,5 +289,14 @@
     <Button color="primary" on:click={() => getInitialData()}>Load Data</Button>
     <Button color="danger" on:click={() => deleteAll()}>Delete All Data</Button>
   </ButtonToolbar>
+
+  <div id="buttons" style="text-align:center;">
+    {#if currentPage > 0}
+      <Button color="primary" outline size="sm" on:click={previousPage}><Icon name="arrow-bar-left" class="icon" /></Button>
+    {/if}
+    {#if currentPage<totalPages }
+      <Button color="primary" outline size="sm" on:click={nextPage}><Icon name="arrow-bar-right" class="icon" /></Button>
+    {/if}
+  </div>
   
   
