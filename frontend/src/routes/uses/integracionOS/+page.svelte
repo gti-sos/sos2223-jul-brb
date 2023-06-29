@@ -2,12 +2,16 @@
     //@ts-nocheck
     import { onMount } from "svelte";
     import { dev } from "$app/environment";
+    
 
     let API = "/api/v2/tourism/";
     let API19 = "https://sos2223-jul-brb.appspot.com/apt-occ";
     let dataTotal = "";
     let dataAlmeria = "";
     let dataAlmeria19 = "";
+    let employmentArray = [];
+    let travelerArray = [];
+    var i;
 
     let result = "";
     let resultStatus = "";
@@ -98,82 +102,64 @@
             const nuevoItem = {
                 month: month,
                 employment: almeriaDato ? almeriaDato.employment : 0,
-                traveller: almeriaDato19 ? almeriaDato19.traveler : 0,
+                traveller: almeriaDato19 ? almeriaDato19.traveler : 0
             };
             return nuevoItem;
         });
-
-        console.log(almeriaOrdenado);
+        for(i=0;i<almeriaOrdenado.length;i++){
+        let employmentOrdenado = almeriaOrdenado[i].employment;
+        let travellerOrdenado = almeriaOrdenado[i].traveller
+        employmentArray.push(employmentOrdenado);
+        travelerArray.push(travellerOrdenado)
+        }
         
         // Retrieved from https://www.ssb.no/jord-skog-jakt-og-fiskeri/jakt
-        Highcharts.chart("container", {
-            chart: {
-                type: "areaspline",
-            },
-            title: {
-                text: "viajeros y trabajadores del turismo rural en Almeria en 2022",
-                align: "left",
-            },
-            legend: {
-                layout: "vertical",
-                align: "left",
-                verticalAlign: "top",
-                x: 120,
-                y: 70,
-                floating: true,
-                borderWidth: 1,
-                backgroundColor:
-                    Highcharts.defaultOptions.legend.backgroundColor ||
-                    "#FFFFFF",
-            },
-            xAxis: {
-                categories: [
-                    "Jan",
-                    "Feb",
-                    "Mar",
-                    "Apr",
-                    "May",
-                    "Jun",
-                    "Jul",
-                    "Aug",
-                    "Sep",
-                    "Oct",
-                    "Nov",
-                    "Dec",
-                ],
-                accessibility: {
-                    description: "Months of the year",
-                },
-            },
-            yAxis: {
-                title: {
-                    text: "Quantity",
-                },
-            },
-            tooltip: {
-                shared: true,
-                headerFormat:
-                    "<b>Hunting season starting autumn {point.x}</b><br>",
-            },
-            credits: {
-                enabled: false,
-            },
-            plotOptions: {
-                areaspline: {
-                    fillOpacity: 0.5,
-                },
-            },
-            series: [
-                {
-                    name: "empleados",
-                    data: almeriaOrdenado.employment,
-                },
-                {
-                    name: "viajeros",
-                    data: almeriaOrdenado.traveller,
-                },
-            ],
-        });
+
+
+Highcharts.chart('container', {
+    chart: {
+        type: 'areaspline'
+    },
+    title: {
+        text: 'Moose and deer hunting in Norway, 2000 - 2021',
+        align: 'left'
+    },
+    
+    legend: {
+        layout: 'vertical',
+        align: 'left',
+        verticalAlign: 'top',
+        y: 70,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor:
+            Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF'
+    },
+     xAxis: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    },
+    yAxis: {
+        title: {
+            text: 'Quantity'
+        }
+    },
+    plotOptions: {
+       
+        areaspline: {
+            fillOpacity: 0.5
+        }
+    },
+    series: [{
+        name: 'Moose',
+        data: employmentArray
+           
+    }, {
+        name: 'Deer',
+        data: travelerArray
+    }]
+});
+
+        
     }
 </script>
 
@@ -187,12 +173,6 @@
 <main>
     <figure class="highcharts-figure">
         <div id="container" />
-        <p class="highcharts-description">
-            This demo shows a smoothed area chart with an x-axis plot band
-            highlighting an area of interest at the last two points. Plot bands
-            and plot lines are commonly used to draw attention to certain areas
-            or thresholds.
-        </p>
     </figure>
 </main>
 
