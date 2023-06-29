@@ -121,7 +121,7 @@ Highcharts.chart('container', {
         type: 'areaspline'
     },
     title: {
-        text: 'Moose and deer hunting in Norway, 2000 - 2021',
+        text: 'viajeros y trabajadores en Almeria en 2022',
         align: 'left'
     },
     
@@ -129,6 +129,7 @@ Highcharts.chart('container', {
         layout: 'vertical',
         align: 'left',
         verticalAlign: 'top',
+        x: 100,
         y: 70,
         floating: true,
         borderWidth: 1,
@@ -150,11 +151,11 @@ Highcharts.chart('container', {
         }
     },
     series: [{
-        name: 'Moose',
+        name: 'Trabajadores',
         data: employmentArray
            
     }, {
-        name: 'Deer',
+        name: 'Viajeros',
         data: travelerArray
     }]
 });
