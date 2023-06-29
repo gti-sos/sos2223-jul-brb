@@ -1,8 +1,8 @@
 //@ts-check
 import { test, expect } from'@playwright/test';
 
-test('get occupation stats', async ({ page }) => {
-    await page.goto('https://sos2223-19.appspot.com/');
+test('get tourism stats', async ({ page }) => {
+    await page.goto('https://sos2223-jul-brb.appspot.com/');
   
     // Click the get started link.
     await page.getByRole('link', { name: 'Gráfico' }).click();
