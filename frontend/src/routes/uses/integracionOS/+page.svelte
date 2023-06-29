@@ -61,8 +61,8 @@
         try {
             const data = await res.json();
             result = JSON.stringify(data, null, 2);
-            dataAlmeria = data;
-            return dataAlmeria;
+            dataAlmeria19 = data;
+            return dataAlmeria19;
         } catch (error) {
             console.log(`Error parsing result: ${error}`);
         }
@@ -92,18 +92,19 @@
             const almeriaDato = AlmeriaData.find(
                 (item) => item.month === month
             );
-            const almeriaDato19 = AlmeriaData.find(
+            const almeriaDato19 = AlmeriaData19.find(
                 (item) => item.month === month
             );
             const nuevoItem = {
                 month: month,
                 employment: almeriaDato ? almeriaDato.employment : 0,
-                traveller: almeriaDato19 ? almeriaDato.traveler : 0,
+                traveller: almeriaDato19 ? almeriaDato19.traveler : 0,
             };
             return nuevoItem;
         });
 
-        console.log(AlmeriaData);
+        console.log(almeriaOrdenado);
+        
         // Retrieved from https://www.ssb.no/jord-skog-jakt-og-fiskeri/jakt
         Highcharts.chart("container", {
             chart: {
@@ -140,6 +141,9 @@
                     "Nov",
                     "Dec",
                 ],
+                accessibility: {
+                    description: "Months of the year",
+                },
             },
             yAxis: {
                 title: {
@@ -155,9 +159,6 @@
                 enabled: false,
             },
             plotOptions: {
-                series: {
-                    pointStart: 2000,
-                },
                 areaspline: {
                     fillOpacity: 0.5,
                 },
