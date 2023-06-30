@@ -6,4 +6,5 @@
     <Button color="primary" href = "/uses/integracionOS/">Gráfico con proxy</Button>
     <Button color="primary" href = "/uses/appl">Grafico precio dollar</Button>
     <Button color="primary" href = "/uses/hevents">Uso de Eventos Historicos</Button>
+    <Button color="primary" href = "/uses/planets">Uso de Información de Planteas</Button>
 </ButtonToolbar>
