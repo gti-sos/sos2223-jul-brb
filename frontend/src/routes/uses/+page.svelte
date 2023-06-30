@@ -4,4 +4,5 @@
 
 <ButtonToolbar>
     <Button color="primary" href = "/uses/integracionOS/">Gráfico con proxy</Button>
+    <Button color="primary" href = "/uses/appl">Grafico precio dollar</Button>
 </ButtonToolbar>
