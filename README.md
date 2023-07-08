@@ -9,7 +9,7 @@
 * **APIs**:
     * [Estadisticas turismo](http://sos2223-jul-brb.appspot.com/api/v2/tourism) (creado por [Bruno Alvaro Rico Barrilero](https://github.com/brico1994))
 * **Documentacion**:
-    * [http://sos2223-jul-brb.appspot.com/api/v1/tourism/docs]("http://sos2223-jul-brb.appspot.com/api/v1/tourism/docs") (developed by [Bruno Alvaro Rico Barrilero](https://github.com/brico1994))
-    * [http://sos2223-jul-brb.appspot.com/api/v2/tourism/docs]("http://sos2223-jul-brb.appspot.com/api/v2/tourism/docs") (developed by [Bruno Alvaro Rico Barrilero](https://github.com/brico1994))
+    * [http://sos2223-jul-brb.appspot.com/api/v1/tourism/docs](http://sos2223-jul-brb.appspot.com/api/v1/tourism/docs) (developed by [Bruno Alvaro Rico Barrilero](https://github.com/brico1994))
+    * [http://sos2223-jul-brb.appspot.com/api/v2/tourism/docs](http://sos2223-jul-brb.appspot.com/api/v2/tourism/docs) (developed by [Bruno Alvaro Rico Barrilero](https://github.com/brico1994))
 * **Frontend**:
     * [Estadisticas de turismo](http://sos2223-jul-brb.appspot.com/tourism) (creado por [Bruno Alvaro Rico Barrilero](https://github.com/brico1994))
